@@ -3,7 +3,7 @@
     <div class="moduletitle">{{Version}}</div>
     <div>
       <!-- This code is vue2 specific. Things are different in vue3. No need to write @value... -->
-      <numfield v-model:age="age" @value="age = $event" minvalue="10" maxvalue="120" message="Age please:"/>
+      <numfield v-model="age" @value="age = $event" minvalue="10" maxvalue="120" message="Age please:"/>
       <numfield v-model="size" @value="size = $event" maxvalue="210" message="Size please:"/>
       <numfield v-model="weight" @value="weight = $event" minvalue="50" message="Your weight:"/>
       <numfield v-model="freezone" @value="freezone = $event" message="Free number"/>
@@ -31,7 +31,7 @@ export default {
   name: 'TesterNumfield',
   setup(props, context) {
 
-    let Version = 'TesterNumfield: 1.30, Sep 27 2020 '
+    let Version = 'TesterNumfield: 1.31, Oct 27 2020 '
 
     let age = ref(45);
     let size = ref(175);
@@ -40,14 +40,15 @@ export default {
     let thesum = computed( () => age.value+size.value+weight.value+freezone.value)
 
     // Test lifecycle handlers
+    console.clear();
     onBeforeUnmount(() =>  { console.log(Version + 'UnMounted');})
-    onMounted(() =>  {console.log(Version + 'Mounted');})
+    onMounted(() =>  {console.info(Version + 'Mounted');})
     
     //-----------------------------------------------------------------------
     // Track user actions
     //-----------------------------------------------------------------------
     watch( [age], ([c1], [p1]) => {
-      console.log("**** " + c1 + "/" + p1 )
+      console.debug("**** " + c1 + "/" + p1 )
     })
 
     // Utilities
