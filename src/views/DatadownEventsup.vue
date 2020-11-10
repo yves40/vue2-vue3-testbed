@@ -22,7 +22,10 @@ export default {
     },
   },
   setup(props, { emit }) { 
-    const Version = "DatadownEventup 1.14: Aug 17 2020"
+    const Version = "DatadownEventup 1.16: Nov 10 2020"
+
+    console.clear();
+    console.info(Version);
     const message = useModelWrapper(props, emit, 'modelValue');
     const isDraft =  useModelWrapper(props, emit, 'payload');
     useModelTimeout(message);   // Clear the field if modified and then untouched for 5 sec
