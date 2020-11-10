@@ -5,8 +5,8 @@ export function useModelWrapper(props, emit, name = 'modelValue') {
       return props[name] ;
     },
     set: (value) => { 
-      //console.log(value);
-      emit(`update:${name}`, value) 
+      console.log(value);
+      emit(`${name}`, value) 
     }
   })
 }

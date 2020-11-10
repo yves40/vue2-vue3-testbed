@@ -10,6 +10,7 @@ export function useModelTimeout(message) {
     }
     tt = setTimeout(() => {
       message.value = '';
+      console.log('Reset')
     }, 5000);
   }
   // Field modified ? Check value and reset if 5 seconds elapsed
