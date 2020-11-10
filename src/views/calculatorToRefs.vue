@@ -33,14 +33,15 @@ export default {
   },
   name: 'calculatorToRefs',
   setup(props) {
-    console.log(JSON.stringify(props))
-    let Version = 'calculatorToRefs: 1.25, Jul 22 2020'
+    let Version = 'calculatorToRefs: 1.26, Nov 10 2020'
+    console.clear();
+    console.info(Version)
     let dummy = {
       num1: 0,
       num2: 0,
     }
-    dummy.num1 = !isNaN(parseInt(props.preset1)) ? dummy.num1 = parseInt(props.preset1): 0;
-    dummy.num2 = !isNaN(parseInt(props.preset2)) ? dummy.num2 = parseInt(props.preset2): 0;
+    dummy.num1 = !isNaN(props.preset1) ? dummy.num1 = props.preset1: 0;
+    dummy.num2 = !isNaN(props.preset2) ? dummy.num2 = props.preset2: 0;
 
     let { num1, num2, result } = useCalculator(dummy.num1, dummy.num2);
     return { 

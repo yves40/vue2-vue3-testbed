@@ -22,22 +22,23 @@ export default {
   },
   name: 'calculatorreactive',
   setup(props) {
-    console.log(JSON.stringify(props))
-    let Version = 'calculatorReactive: 1.09, Jul 22 2020'
+    let Version = 'calculatorReactive: 1.10, Nov 10 2020'
+    console.clear()
+    console.info(Version);
     let state = reactive( {
       num1: 0,
       num2: 0,
       result: 0
     })
 
-    if(!isNaN(parseInt(props.preset1))) {
-       state.num1 = parseInt(props.preset1);
+    if(!isNaN(props.preset1)) {
+       state.num1 = props.preset1;
     }
     else {
        state.num1 = 0;
     }
-    if(!isNaN(parseInt(props.preset2))) {
-       state.num2 = parseInt(props.preset2);
+    if(!isNaN(props.preset2)) {
+       state.num2 = props.preset2;
     }
     else {
        state.num2 = 0;

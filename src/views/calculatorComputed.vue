@@ -22,21 +22,22 @@ export default {
     preset2: String,
   },
   setup(props) {
-    console.log(JSON.stringify(props))
-    let Version = 'calculatorComputed: 1.06, Jul 22 2020'
+    let Version = 'calculatorComputed: 1.07, Nov 10 2020'
+    console.clear();
+    console.info(Version);
     let state = reactive( {
       num1: 0,
       num2: 0,
-      result: computed( () => parseInt(state.num1) + parseInt(state.num2))
+      result: computed( () => state.num1 + state.num2)
     })
-    if(!isNaN(parseInt(props.preset1))) {
-       state.num1 = parseInt(props.preset1);
+    if(!isNaN(props.preset1)) {
+       state.num1 = props.preset1;
     }
     else {
        state.num1 = 0;
     }
-    if(!isNaN(parseInt(props.preset2))) {
-       state.num2 = parseInt(props.preset2);
+    if(!isNaN(props.preset2)) {
+       state.num2 = props.preset2;
     }
     else {
        state.num2 = 0;
