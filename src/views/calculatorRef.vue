@@ -27,24 +27,23 @@ export default {
   props: {
     msg: String,
     preset1: { 
-      type: String,
+      type: Number,
       required: false,
       default: ''
     },
-    preset2: String,
+    preset2: Number,
   },
   components: {
     DatadownEventsup,
   },
   name: 'calculatorRef',
-  setup(props, context) {
+  setup(props, {root}) {
 
-    //const store = useStore();
-    //const router = useRouter();
-    //router.getRoutes().forEach( rt => console.info(rt.path));
-    console.log(context);
+    let Version = 'calculatorRef: 2.37, Nov 10 2020 '
+    console.clear();
+    console.info(Version)
+    const store = root.$store;    // Not 100% sure this is the correct method to get the store
     
-    let Version = 'calculatorRef: 2.32, Sep 25 2020 '
     let Header = props.msg;
     let num1 = ref(0);
     let num2 = ref(0);
@@ -59,16 +58,17 @@ export default {
 
     // Initial load.
     // Have a look at passed parameters if any
-    if(!isNaN(parseInt(props.preset1))) {
-       num1 = ref(parseInt(props.preset1));
+    if(!isNaN(props.preset1)) {
+       num1 = ref(props.preset1);
     }
     // Update the store
     store.dispatch('updateNum1', { num1: num1 })
-    if(!isNaN(parseInt(props.preset2))) {
-       num2 = ref(parseInt(props.preset2));
+    if(!isNaN(props.preset2)) {
+       num2 = ref(props.preset2);
     }
     // Update the store
     store.dispatch('updateNum2', { num2: num2 })
+    store.dispatch('updateResult', { num1: num1.value, num2: num2.value} );
 
     // Test lifecycle handlers
     onBeforeUnmount(() =>  { console.log(Version + 'UnMounted');})
