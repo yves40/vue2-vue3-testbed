@@ -17,7 +17,7 @@ export default {
     numbers
   },
   setup() {
-    const Version = 'Home.vue 1.12, Jul 22 2020'
+    const Version = 'Home.vue 1.13, Dec 21 2020'
 
     return { Version };
   }
