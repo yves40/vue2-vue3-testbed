@@ -33,7 +33,7 @@ export default {
 
     let Version = 'TesterNumfield: 1.32, Dec 23 2020 '
 
-    let age = ref(45);
+    let age = ref(5);
     let size = ref(175);
     const weight = ref(100);
     let freezone = ref(100);
