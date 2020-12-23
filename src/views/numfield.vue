@@ -24,7 +24,7 @@ export default {
 
     console.log(JSON.stringify(props))
 
-    let Version = 'numfield: 1.48, Sep 27 2020 '
+    let Version = 'numfield: 1.49, Dec 23 2020 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
