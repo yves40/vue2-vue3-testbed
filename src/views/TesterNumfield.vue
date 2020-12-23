@@ -20,7 +20,7 @@
 
 import numfield from "./numfield"
 
-import { onMounted, onBeforeUnmount, ref, watch, computed } from "@vue/composition-api";
+import { onMounted, onBeforeUnmount, ref, watch, computed, onUnmounted } from "@vue/composition-api";
 
 export default {
   props: {
@@ -31,7 +31,7 @@ export default {
   name: 'TesterNumfield',
   setup(props, context) {
 
-    let Version = 'TesterNumfield: 1.31, Oct 27 2020 '
+    let Version = 'TesterNumfield: 1.32, Dec 23 2020 '
 
     let age = ref(45);
     let size = ref(175);
@@ -41,7 +41,7 @@ export default {
 
     // Test lifecycle handlers
     console.clear();
-    onBeforeUnmount(() =>  { console.log(Version + 'UnMounted');})
+    onUnmounted(() =>  { console.log(Version + 'UnMounted');})
     onMounted(() =>  {console.info(Version + 'Mounted');})
     
     //-----------------------------------------------------------------------
