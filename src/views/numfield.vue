@@ -2,15 +2,19 @@
   <div>
     <div class="grid2-60 viewframe">
       <span>{{msg}}</span>
-      <input :key="refresh" v-if="valid" style="color:blue;" type="text" class="field" v-model="thenumber"/>
-      <input v-else style="color:red" type="text" class="field" v-model="thenumber" />
+      <div ref="tto" v-show="valid">
+        <input style="color:blue;" type="text" class="field" v-model="thenumber"/>
+      </div>
+      <div v-show="!valid" >
+        <input  style="color:red;" type="text" class="field" v-model="thenumber"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 
-import { onMounted, onUnmounted, ref, watch } from "@vue/composition-api";
+import { onMounted, onUnmounted, ref, watch, getCurrentInstance } from "@vue/composition-api";
 import { modelNumberWrapper } from "../wrappers/modelNumberWrapper";
 
 export default {
@@ -21,9 +25,12 @@ export default {
     message: String
   },
   name: 'numfield',
+  //-----------------------------------------------------------------------
+  // Boot time ==> Setup
+  //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numfield: 1.62, Dec 23 2020 '
+    let Version = 'numfield: 1.74, Dec 24 2020 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
@@ -33,7 +40,10 @@ export default {
     let minmaxcheck = false;
     let mincheck = false;
     let maxcheck = false;
-    let refresh = 0;
+
+    const internalInstance = getCurrentInstance();
+    let todelete = internalInstance.$refs;
+
 
     msg = props.message;
     // Check min max if specified 
@@ -53,9 +63,8 @@ export default {
     watch( [thenumber], ([ckey], [pkey]) => {
       let trackchange = check(thenumber, ckey, pkey);
     })
-
-    //-----------------------------------------------------------------------
-    // Utilities
+    onMounted( () => {
+    })
     //-----------------------------------------------------------------------
     // Manage field color indicator
     //-----------------------------------------------------------------------
@@ -74,8 +83,7 @@ export default {
             if(curr > max) testresult = false;
         }
       }
-      console.log('Valid ? ' + testresult + ' Refresh nbr:' + refresh);
-      ++refresh;
+      console.log('Valid ? ' + testresult);
       return testresult;
     }
     //-----------------------------------------------------------------------
@@ -109,7 +117,6 @@ export default {
       thenumber,
       msg,
       valid,
-      refresh,
       error,
       Version,
     }
