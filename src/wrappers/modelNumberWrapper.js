@@ -7,10 +7,9 @@ export function modelNumberWrapper(props, emit, name = 'value') {
     },
     set: (value) => { 
       if(isNaN(value)) {
-        emit(`update:${name}`, 0); 
+        emit(`${name}`, 0); 
       }
       else {
-        console.log(`Emit ${name} for ${value}`)
         emit(`${name}`, parseInt(value));
       }
     }

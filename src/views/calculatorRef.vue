@@ -39,7 +39,7 @@ export default {
   name: 'calculatorRef',
   setup(props, {root}) {
 
-    let Version = 'calculatorRef: 2.37, Nov 10 2020 '
+    let Version = 'calculatorRef: 2.38, Dec 22 2020 '
     console.clear();
     console.info(Version)
     const store = root.$store;    // Not 100% sure this is the correct method to get the store
@@ -90,18 +90,21 @@ export default {
     // Utilities
     function getVersion() { return  Version;}
     function check(field, ckey, pkey) {  // Get field, current and previous field value
+    console.log("field:" + JSON.stringify(field));
+    console.log("ckey:" + ckey);
+    console.log("pkey:" + pkey);
+    
       let status = false;
       // check we have a number, otherwise reset to previous value
       if ((ckey !== pkey)||(ckey === "")) {
         if(isNaN(ckey)||(ckey === ""))
         {
           console.log('Number please..., reset to zero' );
-          field.value = 0;
+          field.value = "0";
           status = true;
         }
         else {
-          console.log('watch handler: change from: ' + (pkey===""? 'Nothing': pkey) + ' to ' + ckey);
-          //field.value = ckey.replace(/^[0\.]/, '');
+          console.log('watch handler: change from ' + (pkey===""? 'Nothing': pkey) + ' to ' + ckey);
           if(ckey !== "0") field.value = ckey.replace(/^0+/, '');
           status = true;
         }

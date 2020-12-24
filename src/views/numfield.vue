@@ -1,15 +1,20 @@
-<template>
-<div>
-  <div class="grid2-60 viewframe">
-    <span>{{msg}}</span>
-    <input type="text" class="field" v-model="thenumber" />
+<template >
+  <div>
+    <div class="grid2-60 viewframe">
+      <span>{{msg}}</span>
+      <div ref="tto" v-show="valid">
+        <input style="color:blue;" type="text" class="field" v-model="thenumber"/>
+      </div>
+      <div v-show="!valid" >
+        <input  style="color:red;" type="text" class="field" v-model="thenumber"/>
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 
-import { ref, watch } from "@vue/composition-api";
+import { onMounted, onUnmounted, ref, watch, getCurrentInstance } from "@vue/composition-api";
 import { modelNumberWrapper } from "../wrappers/modelNumberWrapper";
 
 export default {
@@ -20,26 +25,37 @@ export default {
     message: String
   },
   name: 'numfield',
+  //-----------------------------------------------------------------------
+  // Boot time ==> Setup
+  //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    console.log(JSON.stringify(props))
-
-    let Version = 'numfield: 1.48, Sep 27 2020 '
+    let Version = 'numfield: 1.74, Dec 24 2020 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
     let error = "None";
     let msg;
+    let valid = false;
+    let minmaxcheck = false;
+    let mincheck = false;
+    let maxcheck = false;
+
+    const internalInstance = getCurrentInstance();
+    let todelete = internalInstance.$refs;
+
 
     msg = props.message;
+    // Check min max if specified 
     if(!isNaN(min)&&!isNaN(max)) {
-      msg = props.message + ' ' + min + ' to ' + max;   
+      msg = props.message + ' ' + min + ' to ' + max;
+      minmaxcheck = true;
     }
     else{ 
-      if(!isNaN(min)) { msg = props.message + ' Min:' + min };
-      if(!isNaN(max)) { msg = props.message + ' Max:' + max };
+      if(!isNaN(min)) { msg = props.message + ' Min:' + min; mincheck = true };
+      if(!isNaN(max)) { msg = props.message + ' Max:' + max; maxcheck = true };
     }
-
+    valid = setInputColor(thenumber.value);
 
     //-----------------------------------------------------------------------
     // Track user actions
@@ -47,9 +63,32 @@ export default {
     watch( [thenumber], ([ckey], [pkey]) => {
       let trackchange = check(thenumber, ckey, pkey);
     })
-
-    // Utilities
-    function getVersion() { return  Version;}
+    onMounted( () => {
+    })
+    //-----------------------------------------------------------------------
+    // Manage field color indicator
+    //-----------------------------------------------------------------------
+    function setInputColor(currentvalue) {
+      let testresult = true;
+      let curr = parseInt(currentvalue);
+      if( minmaxcheck) {
+        if(curr < min || curr > max) testresult = false;
+      }
+      else {
+        if(mincheck) {
+          if(curr < min) testresult = false;
+        }
+        else {
+          if (maxcheck)
+            if(curr > max) testresult = false;
+        }
+      }
+      console.log('Valid ? ' + testresult);
+      return testresult;
+    }
+    //-----------------------------------------------------------------------
+    // Handle any field content modification
+    //-----------------------------------------------------------------------
     function check(field, ckey, pkey) {  // Get field, current and previous field value
       let status = false;
       // check we have a number, otherwise reset to previous value
@@ -66,12 +105,18 @@ export default {
           status = true;
         }
       }
+      valid = setInputColor(field.value);
       return status;
     }
+    //-----------------------------------------------------------------------
+    // Just version
+    //-----------------------------------------------------------------------
+    function getVersion() { return  Version;}
 
     return { 
       thenumber,
       msg,
+      valid,
       error,
       Version,
     }
