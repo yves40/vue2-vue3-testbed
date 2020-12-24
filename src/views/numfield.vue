@@ -30,7 +30,7 @@ export default {
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numfield: 1.74, Dec 24 2020 '
+    let Version = 'numfield: 1.75, Dec 24 2020 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
