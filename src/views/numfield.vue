@@ -2,11 +2,8 @@
   <div>
     <div class="grid2-60 viewframe">
       <span>{{msg}}</span>
-      <div ref="tto" v-show="valid">
-        <input style="color:blue;" type="text" class="field" v-model="thenumber"/>
-      </div>
-      <div v-show="!valid" >
-        <input  style="color:red;" type="text" class="field" v-model="thenumber"/>
+      <div>
+        <input class="field" :class="theclass" type="text" v-model="thenumber"/>
       </div>
     </div>
   </div>
@@ -14,7 +11,7 @@
 
 <script>
 
-import { onMounted, onUnmounted, ref, watch, getCurrentInstance } from "@vue/composition-api";
+import { onMounted, onUnmounted, ref, watch, computed } from "@vue/composition-api";
 import { modelNumberWrapper } from "../wrappers/modelNumberWrapper";
 
 export default {
@@ -30,7 +27,7 @@ export default {
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numfield: 1.76, Dec 24 2020 '
+    let Version = 'numfield: 2.03, Dec 28 2020 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
@@ -40,10 +37,11 @@ export default {
     let minmaxcheck = false;
     let mincheck = false;
     let maxcheck = false;
-
-    const internalInstance = getCurrentInstance();
-    let todelete = internalInstance.$refs;
-
+    let theclass = computed( {
+      get: () => {
+        return getClass();
+      }
+    })
 
     msg = props.message;
     // Check min max if specified 
@@ -65,6 +63,18 @@ export default {
     })
     onMounted( () => {
     })
+
+//-----------------------------------------------------------------------
+    // Manage field color indicator
+    //-----------------------------------------------------------------------
+    function getClass() {
+      let theclassvalue = 'isko'
+      if ( valid ) {
+          theclassvalue = 'isok';
+      }
+      console.log('The field class is now >>>>> ' + theclassvalue);
+      return theclassvalue;
+    }
     //-----------------------------------------------------------------------
     // Manage field color indicator
     //-----------------------------------------------------------------------
@@ -100,7 +110,7 @@ export default {
           status = true;
         }
         else {
-          console.log('watch handler: change from: ' + (pkey===""? 'Nothing': pkey) + ' to ' + ckey);
+          console.log(Version + 'watch handler: change from: ' + (pkey===""? 'Nothing': pkey) + ' to ' + ckey);
           if(ckey !== "0") field.value = parseInt(ckey);
           status = true;
         }
@@ -117,6 +127,7 @@ export default {
       thenumber,
       msg,
       valid,
+      theclass,
       error,
       Version,
     }
@@ -126,5 +137,8 @@ export default {
 </script>
 
 <style scoped>
+
+.isok {color:green; }
+.isko { color:red; }
 
 </style>
