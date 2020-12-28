@@ -27,21 +27,24 @@ export default {
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numfield: 2.03, Dec 28 2020 '
+    let Version = 'numfield: 2.07, Dec 28 2020 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
     let error = "None";
     let msg;
-    let valid = false;
+    let valid = ref(false);
     let minmaxcheck = false;
     let mincheck = false;
     let maxcheck = false;
-    let theclass = computed( {
-      get: () => {
-        return getClass();
+    let theclass = computed( 
+       () => {
+         if (!valid.value)
+            return 'isko'
+        else
+            return 'isok'
       }
-    })
+    )
 
     msg = props.message;
     // Check min max if specified 
@@ -53,7 +56,7 @@ export default {
       if(!isNaN(min)) { msg = props.message + ' Min:' + min; mincheck = true };
       if(!isNaN(max)) { msg = props.message + ' Max:' + max; maxcheck = true };
     }
-    valid = setInputColor(thenumber.value);
+    valid.value = setInputColor(thenumber.value);
 
     //-----------------------------------------------------------------------
     // Track user actions
@@ -64,17 +67,6 @@ export default {
     onMounted( () => {
     })
 
-//-----------------------------------------------------------------------
-    // Manage field color indicator
-    //-----------------------------------------------------------------------
-    function getClass() {
-      let theclassvalue = 'isko'
-      if ( valid ) {
-          theclassvalue = 'isok';
-      }
-      console.log('The field class is now >>>>> ' + theclassvalue);
-      return theclassvalue;
-    }
     //-----------------------------------------------------------------------
     // Manage field color indicator
     //-----------------------------------------------------------------------
@@ -115,7 +107,7 @@ export default {
           status = true;
         }
       }
-      valid = setInputColor(field.value);
+      valid.value = setInputColor(field.value);
       return status;
     }
     //-----------------------------------------------------------------------
@@ -126,7 +118,6 @@ export default {
     return { 
       thenumber,
       msg,
-      valid,
       theclass,
       error,
       Version,
