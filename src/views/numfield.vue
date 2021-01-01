@@ -27,7 +27,7 @@ export default {
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numfield: 2.07, Dec 28 2020 '
+    let Version = 'numfield: 2.09, Dec 31 2020 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
@@ -39,10 +39,14 @@ export default {
     let maxcheck = false;
     let theclass = computed( 
        () => {
-         if (!valid.value)
+         if (!valid.value) {
+            emit('isvalid', false);
             return 'isko'
-        else
+         }
+        else {
+            emit('isvalid', true);
             return 'isok'
+        }
       }
     )
 
@@ -102,7 +106,7 @@ export default {
           status = true;
         }
         else {
-          console.log(Version + 'watch handler: change from: ' + (pkey===""? 'Nothing': pkey) + ' to ' + ckey);
+          //console.log(Version + 'watch handler: change from: ' + (pkey===""? 'Nothing': pkey) + ' to ' + ckey);
           if(ckey !== "0") field.value = parseInt(ckey);
           status = true;
         }
