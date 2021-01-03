@@ -3,8 +3,8 @@
     <div class="moduletitle">{{Version}}</div>
     <div>
       <!-- This code is vue2 specific. Things are different in vue3. No need to write @value... -->
-      <numfield v-model="age" @value="age = $event" @isvalid="agevalid = $event" minvalue="10" maxvalue="120" message="Age please:"/>
-      <numfield v-model="size" @value="size = $event" @isvalid="sizevalid = $event" maxvalue="210" message="Size please:"/>
+      <numfield v-model="age" @value="age = $event"       @isvalid="agevalid = $event" minvalue="10" maxvalue="120" message="Age please:"/>
+      <numfield v-model="size" @value="size = $event"     @isvalid="sizevalid = $event" maxvalue="210" message="Size please:"/>
       <numfield v-model="weight" @value="weight = $event" @isvalid="weightvalid = $event" minvalue="50" message="Your weight:"/>
       <numfield v-model="freezone" @value="freezone = $event" message="Free number"/>
       <button type="submit" :disabled='!buttonflag'>Ready to send</button>
@@ -21,7 +21,7 @@
 
 import numfield from "./numfield"
 
-import { onMounted, onBeforeUnmount, ref, watch, computed, onUnmounted,toRef } from "@vue/composition-api";
+import { onMounted, onBeforeUnmount, ref, watch, computed, onUnmounted } from "@vue/composition-api";
 
 export default {
   props: {
@@ -32,18 +32,18 @@ export default {
   name: 'TesterNumfield',
   setup(props, context) {
 
-    let Version = 'TesterNumfield: 1.54, Jan 01 2021 '
+    let Version = 'TesterNumfield: 1.64, Jan 03 2021 '
 
     let age = ref(5);
     let agevalid = ref(false);
     let size = ref(175);
-    let sizevalid = ref(false);
+    let sizevalid = ref(true);
     const weight = ref(100);
-    let weightvalid = ref(false);
+    let weightvalid = ref(true);
     let freezone = ref(100);
     let thesum = computed( () => age.value+size.value+weight.value+freezone.value);
 //    let buttonflag = computed( () => agevalid.value && sizevalid.value && weightvalid.value);
-    let buttonflag = computed( () => agevalid.value );
+    let buttonflag = computed( () => sizevalid.value );
 
     // Test lifecycle handlers
     console.clear();
@@ -53,8 +53,12 @@ export default {
     //-----------------------------------------------------------------------
     // Track user actions
     //-----------------------------------------------------------------------
-    watch( [age, agevalid], ([currentage, currentagevalid], [prevage, prevagevalid]) => {
-      console.log(Version + currentage + "/" + prevage + ' ==== ' + agevalid.value);
+    watch( [age, agevalid, size, sizevalid, weight, weightvalid], ([currentage, currentagevalid, currentsize, currentsizevalid, currentweight, currentweightvalid], 
+                                              [prevage, prevagevalid, prevsize, prevsizevalid, prevweight, prevweightvalid]) => {
+      console.log('--');
+      console.log(Version + currentage + "/" + prevage + ' Age valid:' + agevalid.value);
+      console.log(Version + currentsize + "/" + prevsize + ' Size valid:' + sizevalid.value);
+      console.log(Version + currentweight + "/" + prevweight + ' Weight valid:' + weightvalid.value);
     })
 
     // Check button 
