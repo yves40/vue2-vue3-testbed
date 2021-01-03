@@ -43,7 +43,7 @@ export default {
     let freezone = ref(100);
     let thesum = computed( () => age.value+size.value+weight.value+freezone.value);
 //    let buttonflag = computed( () => agevalid.value && sizevalid.value && weightvalid.value);
-    let buttonflag = computed( () => sizevalid.value );
+    let buttonflag = computed( () => agevalid.value );
 
     // Test lifecycle handlers
     console.clear();
