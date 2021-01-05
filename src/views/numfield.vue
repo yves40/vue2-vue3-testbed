@@ -22,12 +22,13 @@ export default {
     message: String
   },
   name: 'numfield',
+  emits: 'isvalid',
   //-----------------------------------------------------------------------
   // Boot time ==> Setup
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numfield: 2.09, Dec 31 2020 '
+    let Version = 'numfield: 2.10, Dec 31 2020 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
