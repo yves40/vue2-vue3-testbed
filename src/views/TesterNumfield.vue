@@ -3,10 +3,7 @@
     <div class="moduletitle">{{Version}}</div>
     <div>
       <!-- This code is vue2 specific. Things are different in vue3. No need to write @value... -->
-      <numfield v-model="age" @value="age = $event"       @isvalid="agevalid = $event" minvalue="10" maxvalue="120" message="Age please:"/>
-      <numfield v-model="size" @value="size = $event"     @isvalid="sizevalid = $event" maxvalue="210" message="Size please:"/>
-      <numfield v-model="weight" @value="weight = $event" @isvalid="weightvalid = $event" minvalue="50" message="Your weight:"/>
-      <numfield v-model="freezone" @value="freezone = $event" message="Free number"/>
+      <numfield v-model="age" @value="age = $event"  @isvalid="agevalid = $event" minvalue="10" maxvalue="120" message="Age please:"/>
       <button type="submit" :disabled='!buttonflag'>Ready to send</button>
       <div>
         <span>Result : </span>
@@ -32,7 +29,7 @@ export default {
   name: 'TesterNumfield',
   setup(props, context) {
 
-    let Version = 'TesterNumfield: 1.64, Jan 03 2021 '
+    let Version = 'TesterNumfield: 1.73, Jan 05 2021 '
 
     let age = ref(5);
     let agevalid = ref(false);
@@ -42,7 +39,6 @@ export default {
     let weightvalid = ref(true);
     let freezone = ref(100);
     let thesum = computed( () => age.value+size.value+weight.value+freezone.value);
-//    let buttonflag = computed( () => agevalid.value && sizevalid.value && weightvalid.value);
     let buttonflag = computed( () => agevalid.value );
 
     // Test lifecycle handlers
@@ -57,8 +53,6 @@ export default {
                                               [prevage, prevagevalid, prevsize, prevsizevalid, prevweight, prevweightvalid]) => {
       console.log('--');
       console.log(Version + currentage + "/" + prevage + ' Age valid:' + agevalid.value);
-      console.log(Version + currentsize + "/" + prevsize + ' Size valid:' + sizevalid.value);
-      console.log(Version + currentweight + "/" + prevweight + ' Weight valid:' + weightvalid.value);
     })
 
     // Check button 

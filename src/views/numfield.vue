@@ -28,92 +28,65 @@ export default {
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numfield: 2.10, Dec 31 2020 '
+    let Version = 'numfield: 2.38, Jan 05 2021 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
     let error = "None";
     let msg;
-    let valid = ref(false);
-    let minmaxcheck = false;
-    let mincheck = false;
-    let maxcheck = false;
-    let theclass = computed( 
-       () => {
-         if (!valid.value) {
-            emit('isvalid', false);
-            return 'isko'
-         }
-        else {
-            emit('isvalid', true);
-            return 'isok'
-        }
-      }
-    )
+    let valid = ref(inRangeCheck(thenumber.value));
 
     msg = props.message;
     // Check min max if specified 
     if(!isNaN(min)&&!isNaN(max)) {
       msg = props.message + ' ' + min + ' to ' + max;
-      minmaxcheck = true;
     }
     else{ 
-      if(!isNaN(min)) { msg = props.message + ' Min:' + min; mincheck = true };
-      if(!isNaN(max)) { msg = props.message + ' Max:' + max; maxcheck = true };
+      if(!isNaN(min)) { msg = props.message + ' Min:' + min; };
+      if(!isNaN(max)) { msg = props.message + ' Max:' + max; };
     }
-    valid.value = setInputColor(thenumber.value);
+    // Control display class to be used 
+    let theclass = computed( 
+       () => {
+        console.log(Version + ' Valid flag emitted : ' + valid.value);
+        emit('isvalid', valid.value);
+         if (!valid.value) {
+            return 'isko'
+         }
+        else {
+            return 'isok'
+        }
+      }
+    )
 
     //-----------------------------------------------------------------------
     // Track user actions
     //-----------------------------------------------------------------------
     watch( [thenumber], ([ckey], [pkey]) => {
-      let trackchange = check(thenumber, ckey, pkey);
+      valid.value = inRangeCheck(thenumber.value)
+      console.log('--');
+      console.log(Version + 'Valid ? ' + valid.value);
     })
-    onMounted( () => {
-    })
-
     //-----------------------------------------------------------------------
-    // Manage field color indicator
+    // Check boundaries
+    // Called on 1st load and then for each key input
     //-----------------------------------------------------------------------
-    function setInputColor(currentvalue) {
-      let testresult = true;
-      let curr = parseInt(currentvalue);
-      if( minmaxcheck) {
-        if(curr < min || curr > max) testresult = false;
+    function inRangeCheck(number) {
+      let isvalid = true;
+      if(!isNaN(min)&&!isNaN(max)) {
+        console.log(Version + ' ' + number);
+        if(number < min || number > max) isvalid = false;
       }
       else {
-        if(mincheck) {
-          if(curr < min) testresult = false;
+        if(!isNaN(min)) {
+          if(number < min) isvalid = false;
         }
         else {
-          if (maxcheck)
-            if(curr > max) testresult = false;
+          if(!isNaN(max))
+            if(number > max) isvalid = false;
         }
       }
-      console.log('Valid ? ' + testresult);
-      return testresult;
-    }
-    //-----------------------------------------------------------------------
-    // Handle any field content modification
-    //-----------------------------------------------------------------------
-    function check(field, ckey, pkey) {  // Get field, current and previous field value
-      let status = false;
-      // check we have a number, otherwise reset to previous value
-      if ((ckey !== pkey)||(ckey === "")) {
-        if(isNaN(ckey)||(ckey === ""))
-        {
-          console.log('Number please..., reset to zero' );
-          field.value = 0;
-          status = true;
-        }
-        else {
-          //console.log(Version + 'watch handler: change from: ' + (pkey===""? 'Nothing': pkey) + ' to ' + ckey);
-          if(ckey !== "0") field.value = parseInt(ckey);
-          status = true;
-        }
-      }
-      valid.value = setInputColor(field.value);
-      return status;
+      return isvalid;
     }
     //-----------------------------------------------------------------------
     // Just version
