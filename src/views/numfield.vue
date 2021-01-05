@@ -28,7 +28,7 @@ export default {
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numfield: 2.38, Jan 05 2021 '
+    let Version = 'numfield: 2.40, Jan 05 2021 '
     const thenumber = modelNumberWrapper(props, emit, 'value');
     const min = props.minvalue;
     const max = props.maxvalue;
@@ -48,7 +48,8 @@ export default {
     // Control display class to be used 
     let theclass = computed( 
        () => {
-        console.log(Version + ' Valid flag emitted : ' + valid.value);
+        console.log('-- 1');
+        console.log(Version + ' Emit isvalid : ' + valid.value);
         emit('isvalid', valid.value);
          if (!valid.value) {
             return 'isko'
@@ -64,8 +65,6 @@ export default {
     //-----------------------------------------------------------------------
     watch( [thenumber], ([ckey], [pkey]) => {
       valid.value = inRangeCheck(thenumber.value)
-      console.log('--');
-      console.log(Version + 'Valid ? ' + valid.value);
     })
     //-----------------------------------------------------------------------
     // Check boundaries
@@ -74,7 +73,6 @@ export default {
     function inRangeCheck(number) {
       let isvalid = true;
       if(!isNaN(min)&&!isNaN(max)) {
-        console.log(Version + ' ' + number);
         if(number < min || number > max) isvalid = false;
       }
       else {
