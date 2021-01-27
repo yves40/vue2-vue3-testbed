@@ -39,7 +39,7 @@ export default {
   name: 'calculatorRef',
   setup(props, {root}) {
 
-    let Version = 'calculatorRef: 2.39, Jan 27 2021 '
+    let Version = 'calculatorRef: 2.40, Jan 27 2021 '
     console.clear();
     console.info(Version)
     const store = root.$store;    // Not 100% sure this is the correct method to get the store
