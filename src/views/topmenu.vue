@@ -13,6 +13,7 @@
       <router-link :to="{name: 'calctorefs',   params: { preset1: 99, preset2: 99 }}">Calculator ToRefs</router-link><br>
       <router-link :to="{name: 'ddeu' }">Data Down Events up</router-link><br>
       <router-link :to="{name: 'TesterNumfield', params: { maxvalue: 99, minvalue: 1 } }">Test numeric field</router-link><br>
+      <router-link :to="{name: 'grid1' }">Grid 1st sample></router-link>
   </div>
 </div>
 </template>

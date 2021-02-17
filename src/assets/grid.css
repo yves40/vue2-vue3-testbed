@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "title title"
+    "header header"
+    "sidebar sidebar"
+    "content content"
+    "footer footer";
+    grid-gap: 10px;
+}
+
+.title {
+    grid-area: title;
+}
+.header {
+    grid-area: header;
+}
+.sidebar {
+    grid-area: sidebar;
+    justify-self: left;
+}
+.content {
+    grid-area: content;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.footer {
+    grid-area: footer;
+}
+
+.grid div {
+    color: white;
+}
+.grid div:nth-child(even) {
+    background-color: dimgrey;
+}
+.grid div:nth-child(odd) {
+    background-color:gray
+}
+
+@media screen and (min-width: 736px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+        ". title title ."
+        ". header header ."
+        ". sidebar content ."
+        ". footer footer .";
+    }    
+}

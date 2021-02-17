@@ -12,6 +12,7 @@ Vue.use(BootstrapVue);
 Vue.use(Router);
 
 import './assets/thecss.css';
+import './assets/grid.css';
 
 new Vue({
   el: '#app',
