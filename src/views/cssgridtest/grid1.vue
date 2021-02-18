@@ -8,8 +8,9 @@
             <title>Grid test 1</title>
         </head>
         <body>
+            <h3>{{Version}}</h3>
             <div class="grid">
-                <div class="title">{{Version}}</div>
+                <div class="title">Title</div>
                 <div class="header">Header</div>
                 <div class="sidebar">Side bar</div>
                 <div class="content">
@@ -25,7 +26,7 @@
 export default {
     setup() {
 
-        let Version = "grid1, 1.00 Feb 18 2021";
+        let Version = "grid1, 1.01 Feb 18 2021";
 
         return {
             Version

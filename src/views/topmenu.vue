@@ -13,7 +13,9 @@
       <router-link :to="{name: 'calctorefs',   params: { preset1: 99, preset2: 99 }}">Calculator ToRefs</router-link><br>
       <router-link :to="{name: 'ddeu' }">Data Down Events up</router-link><br>
       <router-link :to="{name: 'TesterNumfield', params: { maxvalue: 99, minvalue: 1 } }">Test numeric field</router-link><br>
-      <router-link :to="{name: 'grid1' }">Grid 1st sample></router-link>
+      <router-link :to="{name: 'grid1' }">Grid 1st sample></router-link><br>
+      <router-link :to="{name: 'grid2' }">Grid 2nd sample></router-link><br>
+      <router-link :to="{name: 'grid3' }">Grid 3rd sample></router-link>
   </div>
 </div>
 </template>
@@ -22,7 +24,7 @@
 
 export default {
   setup(props, context) {
-    const Version = 'topmenu 1.06: Aug 28 2020'
+    const Version = 'topmenu 1.08: Feb 18 2021'
     return {
       Version
     }
