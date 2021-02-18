@@ -8,7 +8,7 @@ import calculatorToRefs from "../views/calculatorToRefs"
 import about from "../views/About"
 import DatadownEventsup from "../views/DatadownEventsup"
 import TesterNumfield from "../views/TesterNumfield"
-import grid1 from "../views/grid1"
+import grid1 from "../views/cssgridtest/grid1"
 
 const routes = [
   { path: '/', name: 'Home',component: Home },

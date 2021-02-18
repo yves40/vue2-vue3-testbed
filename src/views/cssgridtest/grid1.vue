@@ -10,7 +10,7 @@
         </head>
         <body>
             <div class="grid">
-                <div class="title">Title</div>
+                <div class="title">{{Version}}</div>
                 <div class="header">Header</div>
                 <div class="sidebar">Side bar</div>
                 <div class="content">
@@ -22,3 +22,15 @@
         </body>
     </html>
 </template>
+<script>
+export default {
+    setup() {
+
+        let Version = "grid1, 1.00 Feb 18 2021";
+
+        return {
+            Version
+        }
+    }
+}
+</script>
