@@ -19,8 +19,10 @@
         <div class="menuright"><router-link :to="{name: 'grid3' }">Grid 3rd</router-link></div>
       </div>
       <div class="submenu">
-        <div>Flex1</div>
+        <div><router-link :to="{name: 'flex1' }">Flex1</router-link></div>
         <div>Flex2</div>
+        <div>Flex3</div>
+        <div>Flex4</div>
       </div>
   </div>
 </div>
@@ -30,7 +32,7 @@
 
 export default {
   setup(props, context) {
-    const Version = 'topmenu 1.12: Feb 19 2021'
+    const Version = 'topmenu 1.14: Feb 19 2021'
     return {
       Version
     }

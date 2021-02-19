@@ -19,7 +19,7 @@
       topmenu
     },
     setup() {
-      const Version = "App 1.42, Feb 18 2021";
+      const Version = "App 1.43, Feb 19 2021";
       const Topmessage = "Vue3 integration test in Vue2"
 
       return { Version, Topmessage }
