@@ -59,9 +59,9 @@
     }    
 }
 
-/*
+/*-------------------------------------------------------------
     2nd Youtube course from Traversy Media
-*/
+--------------------------------------------------------------*/
 
 .wrapper {
     display: grid;
@@ -114,3 +114,53 @@
     grid-row: 2/4;
     border: 1px solid #333;
 }
+
+/*-------------------------------------------------------------
+    Menu test on Home page
+--------------------------------------------------------------*/
+.menuleft {
+    grid-area: menuleft;
+}
+.menucenter {
+    grid-area: menucenter;
+}
+.menuright {
+    grid-area: menuright;
+}
+.menu {
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: .5em;
+    align-items: stretch;
+    justify-self: right;
+    background: #eee;
+    grid-template-areas: 
+        "menuleft"
+        "menucenter"
+        "menuright";
+    ;
+    
+}
+@media screen and (min-width: 736px) {
+    .menu {
+        margin: 1em;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: .5em;
+        align-items: stretch;
+        justify-self: right;
+        background: #eee;
+        grid-template-areas: 
+            ". menuleft menucenter menuright .";
+        }    
+}
+
+.menu > div {
+    border: #333 1px solid;
+    border-radius: 4px;
+    padding: 0.2em ;
+}
+
+
+
