@@ -147,7 +147,7 @@
         align-items: stretch;
         background: #eee;
         grid-template-areas: 
-            " menuleft menucenter menuright ";
+            "menuleft menuright menucenter ";
         }    
 }
 

@@ -18,6 +18,10 @@
         <div class="menucenter"><router-link :to="{name: 'grid2' }">Grid 2nd</router-link></div>
         <div class="menuright"><router-link :to="{name: 'grid3' }">Grid 3rd</router-link></div>
       </div>
+      <div class="submenu">
+        <div>Flex1</div>
+        <div>Flex2</div>
+      </div>
   </div>
 </div>
 </template>
