@@ -20,7 +20,7 @@
       </div>
       <div class="submenu">
         <div><router-link :to="{name: 'flex1' }">Flex1</router-link></div>
-        <div>Flex2</div>
+        <div><a href="#">Flex2</a></div>
         <div>Flex3</div>
         <div>Flex4</div>
       </div>
