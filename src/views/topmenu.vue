@@ -6,14 +6,14 @@
       <router-link to="/about">About</router-link> |
     </div>
     <!-- For params to be passed, need to set props:true in router/index.js-->
-    <div id="nav">
-      <router-link :to="{name: 'calcref',      params: { preset1: 12, preset2: 87}}">Calculator Ref</router-link><br>
-      <router-link :to="{name: 'calcreactive', params: { preset1: 98, preset2: 1 }}">Calculator Reactive</router-link><br>
-      <router-link :to="{name: 'calccomputed', params: { preset1: 1, preset2: 98 }}">Calculator Computed</router-link><br>
-      <router-link :to="{name: 'calctorefs',   params: { preset1: 99, preset2: 99 }}">Calculator ToRefs</router-link><br>
-      <router-link :to="{name: 'ddeu' }">Data Down Events up</router-link><br>
-      <router-link :to="{name: 'TesterNumfield', params: { maxvalue: 99, minvalue: 1 } }">Test numeric field</router-link><br>
-      <div class="menu">
+    <div class="menu" id="nav">
+      <div><router-link :to="{name: 'calcref',      params: { preset1: 12, preset2: 87}}">Calculator Ref</router-link></div>
+      <div><router-link :to="{name: 'calcreactive', params: { preset1: 98, preset2: 1 }}">Calculator Reactive</router-link></div>
+      <div><router-link :to="{name: 'calccomputed', params: { preset1: 1, preset2: 98 }}">Calculator Computed</router-link></div>
+      <div><router-link :to="{name: 'calctorefs',   params: { preset1: 99, preset2: 99 }}">Calculator ToRefs</router-link></div>
+      <div><router-link :to="{name: 'ddeu' }">Data Down Events up</router-link></div>
+      <div><router-link :to="{name: 'TesterNumfield', params: { maxvalue: 99, minvalue: 1 } }">Test numeric field</router-link></div>
+      <div class="submenu">
         <div class="menuleft"><router-link :to="{name: 'grid1' }">Grid 1st</router-link></div>
         <div class="menucenter"><router-link :to="{name: 'grid2' }">Grid 2nd</router-link></div>
         <div class="menuright"><router-link :to="{name: 'grid3' }">Grid 3rd</router-link></div>
@@ -26,7 +26,7 @@
 
 export default {
   setup(props, context) {
-    const Version = 'topmenu 1.10: Feb 19 2021'
+    const Version = 'topmenu 1.12: Feb 19 2021'
     return {
       Version
     }
