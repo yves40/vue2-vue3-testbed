@@ -11,7 +11,7 @@ import TesterNumfield from "../views/TesterNumfield"
 import grid1 from "../views/cssgridtest/grid1"
 import grid2 from "../views/cssgridtest/grid2"
 import grid3 from "../views/cssgridtest/grid3"
-import flex1 from "../views/cssgridtest/flex1"
+import flex1 from "../views/cssflextest/flex1"
 
 const routes = [
   { path: '/', name: 'Home',component: Home },
