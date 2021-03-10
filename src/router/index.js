@@ -13,6 +13,7 @@ import grid2 from "../views/cssgridtest/grid2"
 import grid3 from "../views/cssgridtest/grid3"
 import responsive from "../views/cssgridtest/responsive"
 import flex1 from "../views/cssflextest/flex1"
+import cssmenu from '../views/cssflextest/menu'
 
 const routes = [
   { path: '/', name: 'Home',component: Home },
@@ -27,7 +28,8 @@ const routes = [
   { path: '/grid2',name: 'grid2', component: grid2},
   { path: '/grid3',name: 'grid3', component: grid3},
   { path: '/responsive',name: 'responsive', component: responsive},
-  { path: '/flex1',name: 'flex1', component: flex1}
+  { path: '/flex1',name: 'flex1', component: flex1},
+  { path: '/cssmenu',name: 'cssmenu', component: cssmenu}
 ]
 
 //Vue.use(Router);

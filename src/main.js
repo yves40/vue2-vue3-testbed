@@ -14,6 +14,7 @@ Vue.use(Router);
 import './assets/thecss.css';
 import './assets/grid.css';
 import './assets/flex.css';
+import './assets/menu.css';
 
 new Vue({
   el: '#app',
