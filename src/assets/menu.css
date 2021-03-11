@@ -41,14 +41,20 @@ a {
 .logo {
     font-size: 20px;
     padding: 7.5px 10px 7.px 0;
+    border-radius: 5px;
+    border:lightblue 1px solid;
 }
 
 .item {
     padding: 10px;
+    border-radius: 5px;
+    border:lightblue 1px solid;
 }
 
 .item.button {
     padding: 9px 5px;
+    border-radius: 5px;
+    border:lightblue 1px solid;
 }
 
 .item:not(.button) a:hover,
@@ -65,19 +71,18 @@ a {
     justify-content: space-between;
     align-items: center;
 }
-
 .css-menu li a {
     display: block;
     padding: 15px 5px;
 }
-
 .css-menu li.subitem a {
     padding: 15px;
 }
-
 .toggle {
     order: 1;
     font-size: 20px;
+    border-radius: 5px;
+    border:lightblue 1px solid;
 }
 .item.button { 
     order: 2;
@@ -87,25 +92,14 @@ a {
     order: 3;
     width: 100%;
     text-align: center;
-    display: block;
+    display:block;
 }
 
-.active .item {
-    display: block;
-}
-
-.button.secondary {
+.secondary {
     border-bottom: 1px #444 solid;
 }
 
 /* Sub menus */
-.css-submenu {
-    display: block;
-}
-
-.css-submenu-active .css-submenu {
-    display: block;
-}
 
 .has-submenu > a::after {
     font-family: "Font Awesome 5 Free";
@@ -119,9 +113,49 @@ a {
 
 .subitem {
     padding: 10px 15px;
-}
-
-.submenu-active {
-    background: #111;
+    background:grey;
     border-radius: 3px;
 }
+
+/*-------------------------------------------------------------
+    Tablet menu
+--------------------------------------------------------------*/
+@media all and (min-width: 700px) {
+    .css-menu { 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        order: 0;
+        border-radius: 5px;
+        border:lightblue 1px solid;
+        background: red;
+    }
+    .toggle {
+        text-align: right;
+        order: 2;
+        border-radius: 5px;
+        border:lightblue 1px solid;
+    }
+    .item.button {
+        width: auto;
+        order: 1;
+        display: block;
+        border-radius: 5px;
+        border:lightblue 1px solid;
+    }
+    .item { 
+        order: 3;
+        width: 100%;
+        text-align: center;
+        display:block;
+        border-radius: 5px;
+        border:lightblue 1px solid;
+    }
+}
+
+
+
+
