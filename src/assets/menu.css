@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*-------------------------------------------------------------
+    Responsive CSS menu. 
+    https://webdesign.tutsplus.com/tutorials/how-to-build-a-responsive-navigation-bar-with-flexbox--cms-33535
+    Mar 10 2021
+--------------------------------------------------------------*/
+
+:root {
+    --main-radius: 10px;
+    --main-padding: 5px;
+    --copyright: 'CBS Mar 08 2021 Limited edition'
+}
+
+/*-------------------------------------------------------------
+    Basic settings
+--------------------------------------------------------------*/
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+nav {
+    background: #222;
+    padding: 0 15px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.css-menu, .css-submenu {
+    list-style: none;
+}
+
+.logo {
+    font-size: 20px;
+    padding: 7.5px 10px 7.px 0;
+}
+
+.item {
+    padding: 10px;
+}
+
+.item.button {
+    padding: 9px 5px;
+}
+
+.item:not(.button) a:hover,
+.item a:hover::after {
+    color: #ccc;
+}
+
+/*-------------------------------------------------------------
+    Mobile menu
+--------------------------------------------------------------*/
+.css-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.css-menu li a {
+    display: block;
+    padding: 15px 5px;
+}
+
+.css-menu li.subitem a {
+    padding: 15px;
+}
+
+.toggle {
+    order: 1;
+    font-size: 20px;
+}
+.item.button { 
+    order: 2;
+}
+
+.item { 
+    order: 3;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.active .item {
+    display: block;
+}
+
+.button.secondary {
+    border-bottom: 1px #444 solid;
+}
+
+/* Sub menus */
+.css-submenu {
+    display: none;
+}
+
+.css-submenu-active .css-submenu {
+    display: block;
+}
+
+.has-submenu > a::after {
+    font-family: "Font Awesome 5 Free";
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 900;
+    content: "\f078";
+    color: white;
+    padding-left: 15px;
+}
+
+.subitem {
+    padding: 10px 15px;
+}
+
+.submenu-active {
+    background: #111;
+    border-radius: 3px;
+}
