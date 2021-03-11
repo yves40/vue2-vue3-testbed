@@ -11,6 +11,8 @@
                     <li class="logo"><a href="#">Creative Mind Agency</a></li>
                     <li @click="toggleMenu" ref="togglebutton" class="toggle"><a href="#"><i :class=htmlclass.innerhtml></i></a></li>
                 </ul>
+                <li class="item button"><a href="#">Log In</a></li>
+                <li class="item button secondary"><a href="#">Sign Up</a></li>
                 <div v-if="htmlclass.active">
                     <li class="item"><a href="#">Home</a></li>
                     <li class="item"><a href="#">About</a></li>
@@ -36,10 +38,7 @@
                         </div>
                     </li>
                     <li class="item"><a href="#">Blog</a></li>
-                    <li class="item"><a href="#">Contact</a>
-                    </li>
-                    <li class="item button"><a href="#">Log In</a></li>
-                    <li class="item button secondary"><a href="#">Sign Up</a></li>
+                    <li class="item"><a href="#">Contact</a></li>
                  </div>
             </nav>
         </body>
