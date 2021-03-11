@@ -1,5 +1,4 @@
 <template>
-    <!DOCTYPE html>
     <html lang="en">
         <head>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -11,16 +10,16 @@
                     <li class="logo"><a href="#">Creative Mind Agency</a></li>
                     <li class="toggle" @click="toggleMenu"><a href="#"><i :class=htmlclass.innerhtml></i></a></li>
                         <li class="item button" v-if="htmlclass.active"><a href="#">Log In</a></li>
-                        <li class="item button" v-if="htmlclass.active"><a href="#">Sign Up</a></li>
+                        <li class="item button secondary" v-if="htmlclass.active"><a href="#">Sign Up</a></li>
                         <li class="item" v-if="htmlclass.active"><a href="#">Home</a></li>
-                        <li class="item secondary" v-if="htmlclass.active"><a href="#">About</a></li>
+                        <li class="item" v-if="htmlclass.active"><a href="#">About</a></li>
                         <li class="item has-submenu" v-if="htmlclass.active">
                             <a @click="toggleServices" tabindex="0">Services</a>
                             <ul class="css-submenu" v-if="htmlclass.activeservices">
-                                <li class="subitem"><a href="#">Service 1</a></li>
-                                <li class="subitem"><a href="#">Service 2</a></li>
-                                <li class="subitem"><a href="#">Service 3</a></li>
-                                <li class="subitem"><a href="#">Service 4</a></li>
+                                <li class="subitem"><a href="#">One</a></li>
+                                <li class="subitem"><a href="#">Two</a></li>
+                                <li class="subitem"><a href="#">Three</a></li>
+                                <li class="subitem"><a href="#">Four</a></li>
                             </ul>
                         </li>
                         <li class="item has-submenu" v-if="htmlclass.active">
@@ -45,7 +44,7 @@ import { reactive } from "@vue/composition-api";
 
 export default {
     setup(props) {
-        const Version = 'menu: 1.36, Mar 10 2021 '
+        const Version = 'menu: 1.40, Mar 10 2021 '
 
         let htmlclass = reactive( {
             innerhtml: 'fas fa-bars',
