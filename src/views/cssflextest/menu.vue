@@ -42,11 +42,11 @@
 
 <script>
 
-import { ref, reactive } from "vue";
+import { reactive, computed } from "@vue/composition-api";
 
 export default {
     setup(props) {
-        const Version = 'menu: 1.19, Mar 10 2021 '
+        const Version = 'menu: 1.21, Mar 10 2021 '
 
         let htmlclass = reactive( {
             innerhtml: 'fas fa-bars'
@@ -62,7 +62,6 @@ export default {
         function toggleMenu() {
             if (!active) {
                 active = true;
-                console.log('Set innerhtml to ' + activebar);
                 htmlclass.innerhtml = activebar;
             }
             else {
