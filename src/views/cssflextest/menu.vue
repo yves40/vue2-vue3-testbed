@@ -40,11 +40,11 @@
 
 <script>
 
-import { reactive } from "@vue/composition-api";
+import { onMounted, reactive } from "@vue/composition-api";
 
 export default {
     setup(props) {
-        const Version = 'menu: 1.40, Mar 10 2021 '
+        const Version = 'menu: 1.44, Mar 10 2021 '
 
         let htmlclass = reactive( {
             innerhtml: 'fas fa-bars',
@@ -54,10 +54,14 @@ export default {
         });
         const inactivebar = "fas fa-bars";
         const activebar = "fas fa-times";
-
+        let thewindow = { 
+            width: window.innerWidth,
+            height: window.innerHeight
+        }
 
         console.clear();
         console.log(Version);
+        console.log('Width: ' + thewindow.width);
 
         function toggleMenu() {
             if (!htmlclass.active) {
@@ -89,10 +93,12 @@ export default {
                htmlclass.activeservices = false;
             }
         }
-        function onresize(UIEvent) {
-            console.log('.')
-        }
-
+        onMounted(() => 
+        {
+            window.addEventListener('resize', () => {
+                thewindow.width = window.innerWidth;
+            })
+        })
         return {
             Version, 
             toggleMenu,
