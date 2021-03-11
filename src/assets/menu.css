@@ -87,7 +87,7 @@ a {
     order: 3;
     width: 100%;
     text-align: center;
-    display: none;
+    display: block;
 }
 
 .active .item {
@@ -100,7 +100,7 @@ a {
 
 /* Sub menus */
 .css-submenu {
-    display: none;
+    display: block;
 }
 
 .css-submenu-active .css-submenu {
