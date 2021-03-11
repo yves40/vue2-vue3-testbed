@@ -33,7 +33,7 @@
                     </li>
                     <li class="item button"><a href="#">Log In</a></li>
                     <li class="item button secondary"><a href="#">Sign Up</a></li>
-                    <li @click="toggleMenu" ref="togglebutton" class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+                    <li @click="toggleMenu" ref="togglebutton" class="toggle"><a href="#"><i :class=htmlclass.innerhtml></i></a></li>
                 </ul>
             </nav>
         </body>
@@ -41,43 +41,42 @@
 </template>
 
 <script>
-import { onBeforeUpdate } from '@vue/composition-api';
 
-import ref from "vue";
+import { ref, reactive } from "vue";
 
 export default {
     setup(props) {
-        const Version = 'menu: 1.06, Mar 10 2021 '
-/*
-        const toggle = document.querySelector('.toggle');
-        const menu = document.querySelector('.css-menu');
-*/
+        const Version = 'menu: 1.19, Mar 10 2021 '
+
+        let htmlclass = reactive( {
+            innerhtml: 'fas fa-bars'
+        });
+        const inactivebar = "fas fa-bars";
+        const activebar = "fas fa-times";
+        let active = false;
+
 
         console.clear();
         console.log(Version);
-        // let doclist = ref([]);
 
         function toggleMenu() {
-            console.log('Toggle....');
-            // console.log(doclist);
-            // let classlist = $refs.togglebutton.classList;
-            /*
-            if (menu.classList.contains("active")) {
-                menu.classList.remove("active");
-                toggle.querySelector("a").innerHTML = "<i class='fas fas-bars'></i>";
+            if (!active) {
+                active = true;
+                console.log('Set innerhtml to ' + activebar);
+                htmlclass.innerhtml = activebar;
             }
             else {
-                menu.classList.add("active");
-                toggle.querySelector("a").innerHTML = "<i class='fas fas-times'></i>";
+                active = false;
+                console.log('Set innerhtml to ' + inactivebar);
+                htmlclass.innerhtml = inactivebar;
             }
-            */
         }
         // toggle.addEventListener('click', toggleMenu, false);
 
         return {
             Version, 
             toggleMenu,
-            //doclist
+            htmlclass
         }
     }
 }
