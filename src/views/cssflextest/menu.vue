@@ -3,10 +3,10 @@
         <head>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         </head>
-        <body>
+        <body @click="checkTarget">
             <h3>{{Version}}</h3>
-            <nav>
-                <ul class="css-menu">
+            <nav >
+                <ul class="css-menu" >
                     <li class="logo"><a href="#">Creative Mind Agency</a></li>
                     <li class="toggle" @click="toggleMenu"><a href="#"><i :class=htmlclass.innerhtml></i></a></li>
                         <li class="item button" v-if="htmlclass.active"><a href="#">Log In</a></li>
@@ -44,7 +44,12 @@ import { onMounted, reactive } from "@vue/composition-api";
 
 export default {
     setup(props) {
-        const Version = 'menu: 1.44, Mar 10 2021 '
+        const Version = 'menu: 1.59, Mar 12 2021 ';
+
+        const desktopwidth = 980;
+        const tabletwidth = 700;
+        const inactivebar = "fas fa-bars";
+        const activebar = "fas fa-times";
 
         let htmlclass = reactive( {
             innerhtml: 'fas fa-bars',
@@ -52,11 +57,19 @@ export default {
             activeservices: false,
             activeplans: false
         });
-        const inactivebar = "fas fa-bars";
-        const activebar = "fas fa-times";
+
         let thewindow = { 
             width: window.innerWidth,
             height: window.innerHeight
+        }
+        // Set initial display
+        if(thewindow.width >= desktopwidth) {
+            htmlclass.active = true;
+        }
+        else {
+            if(thewindow.width >= tabletwidth) {
+                htmlclass.active = false;
+            }
         }
 
         console.clear();
@@ -93,10 +106,26 @@ export default {
                htmlclass.activeservices = false;
             }
         }
+        // Close drop down menus if clicked outside
+        // See above, drop down are Services and plans
+        function checkTarget ( event ) {
+            console.log(event.target.innerText);
+            let url = event.target;
+            if(event.target.innerText.indexOf('Plans') == -1)
+                htmlclass.activeplans = false;
+            if(event.target.innerText.indexOf('Services') == -1)
+                htmlclass.activeservices = false;
+        }
         onMounted(() => 
         {
+            // Track window width
             window.addEventListener('resize', () => {
                 thewindow.width = window.innerWidth;
+                // Desktop minimum screen width currently set to 980
+                if (thewindow.width > 979) {
+                    htmlclass.active = true;
+                    htmlclass.innerhtml = activebar;
+                }
             })
         })
         return {
@@ -104,6 +133,7 @@ export default {
             toggleMenu,
             toggleServices,
             togglePlans,
+            checkTarget,
             htmlclass
         }
     }
