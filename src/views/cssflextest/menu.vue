@@ -44,7 +44,7 @@ import { onMounted, reactive } from "@vue/composition-api";
 
 export default {
     setup(props) {
-        const Version = 'menu: 1.59, Mar 12 2021 ';
+        const Version = 'menu: 1.62, Mar 12 2021 ';
 
         const desktopwidth = 980;
         const tabletwidth = 700;
@@ -109,8 +109,8 @@ export default {
         // Close drop down menus if clicked outside
         // See above, drop down are Services and plans
         function checkTarget ( event ) {
-            console.log(event.target.innerText);
-            let url = event.target;
+            //console.log(event.target.innerText);
+            //console.log(event.target.parentNode.classList);
             if(event.target.innerText.indexOf('Plans') == -1)
                 htmlclass.activeplans = false;
             if(event.target.innerText.indexOf('Services') == -1)
