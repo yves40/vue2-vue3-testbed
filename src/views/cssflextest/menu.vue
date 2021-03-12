@@ -7,7 +7,7 @@
             <h3>{{Version}}</h3>
             <nav >
                 <ul class="css-menu" >
-                    <li class="logo"><a href="#">Creative Mind Agency</a></li>
+                    <li class="logo"><a href="#">{{htmlclass.screenmode}}</a></li>
                     <li class="toggle" @click="toggleMenu"><a href="#"><i :class=htmlclass.innerhtml></i></a></li>
                         <li class="item button" v-if="htmlclass.active"><a href="#">Log In</a></li>
                         <li class="item button secondary" v-if="htmlclass.active"><a href="#">Sign Up</a></li>
@@ -44,18 +44,22 @@ import { onMounted, reactive } from "@vue/composition-api";
 
 export default {
     setup(props) {
-        const Version = 'menu: 1.62, Mar 12 2021 ';
+        const Version = 'menu: 1.68, Mar 12 2021 ';
 
         const desktopwidth = 980;
         const tabletwidth = 700;
         const inactivebar = "fas fa-bars";
         const activebar = "fas fa-times";
+        const phonescreen = "Mobile, vertical menu";
+        const tabletscreen = "Tablet, mixed menu"
+        const desktopscreen = "Desktop, horizontal menu";
 
         let htmlclass = reactive( {
             innerhtml: 'fas fa-bars',
-            active: false,
-            activeservices: false,
-            activeplans: false
+            active: false,              // Menu is displayed
+            activeservices: false,      // Services submenu displayed
+            activeplans: false,         // Plans submenu displayed
+            screenmode: 'None'              // Just track screen mode on menu left side
         });
 
         let thewindow = { 
@@ -71,6 +75,7 @@ export default {
                 htmlclass.active = false;
             }
         }
+        ScreenMode();   // Set the top left menu screen mode
 
         console.clear();
         console.log(Version);
@@ -116,6 +121,15 @@ export default {
             if(event.target.innerText.indexOf('Services') == -1)
                 htmlclass.activeservices = false;
         }
+        function ScreenMode() {
+            if (thewindow.width >= desktopwidth)
+                htmlclass.screenmode = desktopscreen;
+            else
+                if (thewindow.width >= tabletwidth)
+                    htmlclass.screenmode = tabletscreen;
+                else
+                    htmlclass.screenmode = phonescreen;
+        }
         onMounted(() => 
         {
             // Track window width
@@ -126,8 +140,10 @@ export default {
                     htmlclass.active = true;
                     htmlclass.innerhtml = activebar;
                 }
+                ScreenMode();
             })
         })
+    
         return {
             Version, 
             toggleMenu,
