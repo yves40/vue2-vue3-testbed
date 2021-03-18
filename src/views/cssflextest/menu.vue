@@ -59,7 +59,7 @@ export default {
             active: false,              // Menu is displayed
             activeservices: false,      // Services submenu displayed
             activeplans: false,         // Plans submenu displayed
-            screenmode: 'None'              // Just track screen mode on menu left side
+            screenmode: 'None'          // Just track screen mode on menu left side
         });
 
         let thewindow = { 

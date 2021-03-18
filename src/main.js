@@ -15,7 +15,7 @@ import './assets/thecss.css';
 import './assets/grid.css';
 import './assets/flex.css';
 import './assets/menu.css';
-
+import './assets/responsivegrid.css'
 new Vue({
   el: '#app',
   router,

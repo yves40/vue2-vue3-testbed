@@ -20,7 +20,8 @@
       </div>
       <div class="submenu">
         <div><router-link :to="{name: 'flex1' }">Flex1</router-link></div>
-        <div><router-link :to="{name: 'responsive' }">Responsive CSS</router-link></div>
+        <div><router-link :to="{name: 'responsiveflex' }">Responsive Flex</router-link></div>
+        <div><router-link :to="{name: 'responsivegrid' }">Responsive Grid</router-link></div>
         <div><router-link :to="{name: 'cssmenu' }">CSS menu</router-link></div>
       </div>
   </div>
@@ -31,7 +32,7 @@
 
 export default {
   setup(props, context) {
-    const Version = 'topmenu 1.16: Mar 10 2021'
+    const Version = 'topmenu 1.18: Mar 18 2021'
     return {
       Version
     }

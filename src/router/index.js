@@ -11,7 +11,8 @@ import TesterNumfield from "../views/TesterNumfield"
 import grid1 from "../views/cssgridtest/grid1"
 import grid2 from "../views/cssgridtest/grid2"
 import grid3 from "../views/cssgridtest/grid3"
-import responsive from "../views/cssgridtest/responsive"
+import responsiveflex from "../views/cssgridtest/responsiveflex"
+import responsivegrid from "../views/cssgridtest/responsivegrid"
 import flex1 from "../views/cssflextest/flex1"
 import cssmenu from '../views/cssflextest/menu'
 
@@ -27,7 +28,8 @@ const routes = [
   { path: '/grid1',name: 'grid1', component: grid1},
   { path: '/grid2',name: 'grid2', component: grid2},
   { path: '/grid3',name: 'grid3', component: grid3},
-  { path: '/responsive',name: 'responsive', component: responsive},
+  { path: '/responsiveflex',name: 'responsiveflex', component: responsiveflex},
+  { path: '/responsivegrid',name: 'responsivegrid', component: responsivegrid},
   { path: '/flex1',name: 'flex1', component: flex1},
   { path: '/cssmenu',name: 'cssmenu', component: cssmenu}
 ]
