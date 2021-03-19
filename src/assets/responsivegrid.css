@@ -55,6 +55,7 @@ p {
     min-height: 450px;
     color: #fff;
     text-align: center;
+    opacity: 0.9;
 }
 
 #showcase .bg-image {
