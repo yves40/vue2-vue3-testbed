@@ -23,7 +23,9 @@
             <section id="section-a" class="rgrid">
                 <div class="content-wrap">
                     <h2 class="content-title">Web application Development</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet magnam ipsam corrupti. Modi repellendus deleniti sint ipsum. Odio incidunt libero aperiam perspiciatis numquam corrupti nobis laudantium officiis, voluptatum ipsa qui optio, provident rem iure quae, ea dignissimos ut veniam.</p>
+                    <div class="content-text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet magnam ipsam corrupti. Modi repellendus deleniti sint ipsum. Odio incidunt libero aperiam perspiciatis numquam corrupti nobis laudantium officiis, voluptatum ipsa qui optio, provident rem iure quae, ea dignissimos ut veniam.</p>
+                    </div>
                 </div>
             </section>
             <!-- Section b --> 
@@ -37,6 +39,8 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, quo nemo iure laudantium ipsum quam quasi. Fuga voluptas quo aperiam?</p>
                             </div>
                         </div>
+                    </li>
+                    <li>
                         <div class="card">
                             <img src="../../assets/mobile.jpg" alt="Mobile Image">
                             <div class="card-content">
@@ -44,6 +48,8 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, quo nemo iure laudantium ipsum quam quasi. Fuga voluptas quo aperiam?</p>
                             </div>
                         </div>
+                    </li>
+                    <li>
                         <div class="card">
                             <img src="../../assets/marketing.jpg" alt="Marketing Image">
                             <div class="card-content">
