@@ -62,7 +62,7 @@
                 </div>
             </section>
             <!-- Section D -->
-            <section id="section-D" class="rgrid">
+            <section id="section-d" class="rgrid">
                 <div class="box">
                     <h2 class="content-title">Contact Us</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae dolorem laborum possimus porro reiciendis nisi recusandae debitis error ut incidunt.</p>
