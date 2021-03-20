@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Grid by Traversy</title>
     </head>
-    <body>
+    <body class="body">
         <!-- Header -->
         <header id="showcase" class="rgrid">
             <div class="bg-image"></div>
