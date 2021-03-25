@@ -8,14 +8,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="">
         <title>University Website Design</title>
     </head>
     <body>
         <section class="header">
             <nav>
                 <a href="index.html"><img src="images/logo.png" alt=""></a>
-                <div class="nav-links">
-                    <i class="fas fa-times"></i>
+                <div class="nav-links" id="navLinks">
+                    <i class="fa fa-times" onclick="hideMenu()"></i>
                     <ul>
                         <li><a href="">HOME</a></li>
                         <li><a href="">ABOUT</a></li>
@@ -24,7 +25,7 @@
                         <li><a href="">CONTACT</a></li>
                     </ul>
                 </div>
-                <i class="fas fa-bars"></i>
+                <i class="fa fa-bars" onclick="showMenu()"></i>
             </nav>
             <div class="text-box">
                 <h1>World's biggest University</h1>
@@ -36,4 +37,15 @@
             </div>
         </section>
     </body>
+    <!-- JS support for open / close slideable menu -->-->
+    <script>
+        var navlinks = document.getElementById("navLinks");
+
+        function showMenu() {
+            navlinks.style.right = "0";
+        }
+        function hideMenu() {
+            navlinks.style.right = "-200px";
+        }
+    </script>
 </html>
